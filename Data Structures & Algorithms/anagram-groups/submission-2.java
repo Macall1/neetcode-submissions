@@ -1,0 +1,15 @@
+class Solution {
+    public List<List<String>> groupAnagrams(String[] strs) {
+        HashMap<String, List<String>> map = new HashMap<>();
+for (String str : strs) {
+    char[] c = str.toCharArray();
+    Arrays.sort(c);
+    String sorted = new String(c);
+    
+    // Create the list if missing, then append the original string
+    map.computeIfAbsent(sorted, k -> new ArrayList<>()).add(str);
+}
+
+return new ArrayList<>(map.values());
+    }
+}
